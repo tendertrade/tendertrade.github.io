@@ -326,7 +326,7 @@ footer .wrap { padding-top: 24px; padding-bottom: 32px; font-size: 13px; color: 
   <div class="wrap">
     <span>© 2026 TenderTrade. An information service, not procurement or legal advice.</span>
     <span>Contains public sector information licensed under the Open Government Licence v3.0.</span>
-    <span><a href="privacy.html">Privacy policy</a></span>
+    <span><a href="privacy.html">Privacy policy</a> · <a href="contact.html">Contact us</a></span>
   </div>
 </footer>
 
@@ -363,6 +363,7 @@ form.addEventListener("submit", async (e) => {
   const data = new FormData(form);
   const payload = Object.fromEntries(data.entries());
   payload.accreditations = data.getAll("accreditations").join(", ") || "None given";
+  payload._subject = "New TenderTrade trial signup";
 
   if (!FORM_ENDPOINT) {
     show("Preview only: the form isn't connected yet, so nothing was sent. Once it's live, " + payload.firm + " would get its first list next Monday.", true);
