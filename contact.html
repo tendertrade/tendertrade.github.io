@@ -67,7 +67,7 @@ const f=document.getElementById("contact"),out=document.getElementById("c-out"),
 function show(t,ok){out.textContent=t;out.className="msg "+(ok?"ok":"err");}
 f.addEventListener("submit",async e=>{
   e.preventDefault();
-  const name=f.name.value.trim(),email=f.email.value.trim(),message=f.message.value.trim();
+  const name=document.getElementById("c-name").value.trim(),email=document.getElementById("c-email").value.trim(),message=document.getElementById("c-msg").value.trim();
   if(!name||!email||!message){show("Please fill in all three boxes.",false);return;}
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){show("That email address doesn't look right. Please check it.",false);return;}
   go.disabled=true;go.textContent="Sending...";
