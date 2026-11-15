@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TenderTrade</title>
+<meta name="description" content="Council and public-sector jobs your building firm can actually win, sent every Monday. Free 30-day trial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: a site-hoarding headline on drawing paper, with the product itself
+     (this week's Monday list) as the hero. Hi-vis yellow used in one place only. */
+  --paper: #f3f2ee;
+  --sheet: #ffffff;
+  --ink: #1c1f22;
+  --muted: #5b6168;
+  --rule: #d9d7cf;
+  --hivis: #f2c200;
+  --flag: #a14a00;
+  --font-display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.55;
+}
+a { color: var(--ink); }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+header.top { border-bottom: 1px solid var(--rule); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+.mark { font-family: var(--font-display); font-weight: 800; font-size: 28px; letter-spacing: .01em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.mark i { display: inline-block; width: 22px; height: 22px; background: repeating-linear-gradient(-45deg, var(--ink) 0 5px, var(--hivis) 5px 10px); border-radius: 2px; }
+.top-cta { font-weight: 600; font-size: 15px; text-decoration: none; border: 1.5px solid var(--ink); padding: 8px 14px; border-radius: 4px; }
+.top-cta:hover { background: var(--ink); color: var(--paper); }
+
+/* Hero */
+.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: start; padding-top: 56px; padding-bottom: 56px; }
+.kicker { font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+h1 {
+  font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(46px, 7.2vw, 88px); line-height: .92; letter-spacing: -.005em;
+  margin: 0 0 22px; text-wrap: balance;
+}
+h1 mark { background: var(--hivis); color: var(--ink); padding: 0 .08em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.lede { font-size: 19px; max-width: 34em; margin: 0 0 28px; color: #2b2f33; }
+.btn {
+  display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 17px;
+  background: var(--ink); color: #fff; border: 0; border-radius: 4px; padding: 15px 22px;
+  text-decoration: none; cursor: pointer;
+}
+.btn:hover { background: #000; }
+.small { font-size: 14px; color: var(--muted); margin-top: 12px; }
+
+/* The Monday list (sample) */
+.monday { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 1px 0 var(--rule), 0 18px 40px -24px rgba(28,31,34,.35); }
+.monday-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--rule); }
+.monday-head b { font-family: var(--font-display); font-size: 22px; text-transform: uppercase; letter-spacing: .01em; }
+.monday-head span { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.job { padding: 14px 18px; border-bottom: 1px solid var(--rule); display: grid; gap: 4px; }
+.job:last-of-type { border-bottom: 0; }
+.job h3 { margin: 0; font-size: 16px; line-height: 1.35; text-wrap: balance; }
+.job .who { font-size: 14px; color: var(--muted); }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 14px; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+.chip { font-family: var(--font-body); font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 99px; border: 1px solid var(--rule); }
+.chip.nw { background: #e9f0e4; border-color: #c9d9bf; color: #2e5321; }
+.chip.soon { background: #fbe9dc; border-color: #f0cdb3; color: var(--flag); }
+.check { font-size: 13px; color: var(--flag); }
+.monday-foot { padding: 10px 18px; font-size: 12px; color: var(--muted); border-top: 1px dashed var(--rule); }
+
+/* Numbers strip */
+.strip { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--sheet); }
+.strip .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 22px; padding-bottom: 22px; }
+.stat b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 14px; color: var(--muted); }
+
+/* Sections */
+section.block .wrap { padding-top: 64px; padding-bottom: 64px; }
+h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(34px, 4.6vw, 52px); line-height: .95; margin: 0 0 28px; text-wrap: balance; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; list-style: none; padding: 0; margin: 0; counter-reset: s; }
+.steps li { border-top: 3px solid var(--ink); padding-top: 14px; counter-increment: s; }
+.steps li::before { content: "0" counter(s); font-family: var(--font-mono); font-size: 13px; color: var(--muted); display: block; margin-bottom: 6px; }
+.steps h3 { margin: 0 0 6px; font-size: 19px; }
+.steps p { margin: 0; color: #33383d; }
+
+.why { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.why p { margin: 0 0 14px; max-width: 34em; }
+.flags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.flags span { font-size: 14px; border: 1px solid var(--rule); background: var(--sheet); padding: 6px 10px; border-radius: 4px; }
+
+/* Form */
+.signup { background: var(--ink); color: #f3f2ee; }
+.signup h2 { color: #fff; }
+.signup .wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; padding-top: 64px; padding-bottom: 64px; }
+.signup .intro p { color: #c9ccce; max-width: 28em; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: grid; gap: 6px; }
+.field.full { grid-column: 1 / -1; }
+label, legend { font-size: 14px; font-weight: 600; color: #e6e7e8; }
+input[type=text], input[type=email], select {
+  font: inherit; font-size: 16px; padding: 12px; border-radius: 4px; border: 1px solid #4a5056;
+  background: #262a2e; color: #fff; width: 100%;
+}
+select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, #c9ccce 50%), linear-gradient(135deg, #c9ccce 50%, transparent 50%); background-position: calc(100% - 18px) 52%, calc(100% - 13px) 52%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 34px; }
+input:focus-visible, select:focus-visible { outline: 3px solid var(--hivis); outline-offset: 1px; border-color: var(--hivis); }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+.ticks { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.ticks label { font-weight: 400; display: flex; align-items: center; gap: 8px; color: #e6e7e8; }
+.ticks input { width: 18px; height: 18px; accent-color: var(--hivis); }
+.submit { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.submit .btn { background: var(--hivis); color: var(--ink); }
+.submit .btn:hover { background: #ffd21a; }
+.submit .btn[disabled] { opacity: .6; cursor: wait; }
+.submit p { margin: 0; font-size: 14px; color: #b9bdc0; }
+.msg { grid-column: 1 / -1; padding: 14px 16px; border-radius: 4px; font-size: 15px; display: none; }
+.msg.ok { display: block; background: #e9f0e4; color: #1f3a16; }
+.msg.err { display: block; background: #fbe9dc; color: #6b2f00; }
+
+/* FAQ */
+.faq { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; }
+.faq h3 { font-size: 17px; margin: 0 0 6px; }
+.faq p { margin: 0; color: #33383d; }
+
+footer { border-top: 1px solid var(--rule); }
+footer .wrap { padding-top: 24px; padding-bottom: 32px; font-size: 13px; color: var(--muted); display: grid; gap: 6px; }
+
+@media (max-width: 860px) {
+  .hero .wrap, .why, .signup .wrap, .faq { grid-template-columns: 1fr; gap: 32px; }
+  .steps { grid-template-columns: 1fr; }
+  .strip .wrap { grid-template-columns: 1fr; gap: 14px; }
+}
+@media (max-width: 520px) {
+  form { grid-template-columns: 1fr; }
+  body { font-size: 16px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .job { transition: background .15s ease; }
+  .job:hover { background: #fbfaf6; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="TenderTrade home"><i aria-hidden="true"></i>TenderTrade</a>
+    <a class="top-cta" href="#signup">Start free trial</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker">For small builders, joiners and trades</p>
+        <h1>Council jobs your firm can <mark>actually win.</mark></h1>
+        <p class="lede">Every Monday we send you the public-sector building jobs that fit your trade, your area and the size of your firm, with any catches flagged before you waste a minute on them.</p>
+        <a class="btn" href="#signup">Start your free 30-day trial</a>
+        <p class="small">No card needed. One email a week. Stop any time.</p>
+      </div>
+
+      <article class="monday" aria-label="Example of a Monday list">
+        <div class="monday-head"><b>Your Monday list</b><span>North West · up to £500k</span></div>
+
+        <div class="job">
+          <span><span class="chip nw">North West</span> <span class="chip soon">Closes in 5 days</span></span>
+          <h3>Structural repairs and planned maintenance</h3>
+          <div class="who">Blackpool Borough Council</div>
+          <div class="facts"><span>Value: not stated</span><span>Closes 20 Nov 2026</span></div>
+        </div>
+
+        <div class="job">
+          <span><span class="chip nw">North West</span></span>
+          <h3>Roller shutters and automatic doors: servicing and responsive repairs</h3>
+          <div class="who">Oldham Metropolitan Borough Council</div>
+          <div class="facts"><span>£432,000</span><span>Closes 3 Dec 2026</span></div>
+        </div>
+
+        <div class="job">
+          <span><span class="chip nw">North West</span></span>
+          <h3>Minor building works, joinery and redecoration</h3>
+          <div class="who">Liverpool School of Tropical Medicine</div>
+          <div class="facts"><span>£300,000</span><span>Closes 14 Dec 2026</span></div>
+          <div class="check">Check before bidding: it's a framework, so work is called off over time</div>
+        </div>
+
+        <div class="monday-foot">Real tenders from the week of 15 November 2026. Always read the full notice before bidding.</div>
+      </article>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <div class="stat"><b>9,000+</b><span>public notices read for you every month</span></div>
+      <div class="stat"><b>189</b><span>open building and joinery jobs found in the last 30 days</span></div>
+      <div class="stat"><b>£0</b><span>for your first 30 days</span></div>
+    </div>
+  </div>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><h3>Tell us what you do</h3><p>Your trade, where you'll travel to and the size of job you can take on. It takes a minute.</p></li>
+        <li><h3>Get your list every Monday</h3><p>We check every new tender on Find a Tender and Contracts Finder and send you only the ones that fit.</p></li>
+        <li><h3>Bid on the right ones</h3><p>Each job shows the value, the closing date and a link to the full notice, plus anything that could rule you out.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" style="background: var(--sheet); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+    <div class="wrap why">
+      <div>
+        <h2>Built by a builder, not a tech company</h2>
+      </div>
+      <div>
+        <p>TenderTrade was made by a joinery and building firm in the North West that got fed up with trawling council websites at night. Most tender alerts are built for consultants and IT firms. This one only looks for building work a small firm can realistically win.</p>
+        <p>Before you open an 80-page tender pack, we flag the things that usually catch small firms out:</p>
+        <div class="flags">
+          <span>Constructionline needed</span><span>CHAS or SSIP</span><span>ISO certificates</span><span>Minimum turnover</span><span>Insurance levels</span><span>Site visit required</span><span>Framework or rolling list</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="signup" id="signup">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Start your free 30-day trial</h2>
+        <p>Fill this in and your first list arrives next Monday. No card, no contract. If it's not finding you work, just reply "stop".</p>
+      </div>
+
+      <form id="trial" novalidate>
+        <div class="field"><label for="name">Your name</label><input type="text" id="name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="firm">Business name</label><input type="text" id="firm" name="firm" autocomplete="organization" required></div>
+        <div class="field full"><label for="email">Email for your Monday list</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+
+        <div class="field">
+          <label for="trade">Main trade</label>
+          <select id="trade" name="trade" required>
+            <option value="">Choose one</option>
+            <option>Joinery and carpentry</option>
+            <option>General building</option>
+            <option>Windows and doors</option>
+            <option>Kitchens and bathrooms</option>
+            <option>Roofing</option>
+            <option>Groundworks and landscaping</option>
+            <option>Painting and decorating</option>
+            <option>Plastering and dry lining</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="region">Where you work</label>
+          <select id="region" name="region" required>
+            <option value="">Choose one</option>
+            <option>North West</option>
+            <option>North East</option>
+            <option>Yorkshire and the Humber</option>
+            <option>East Midlands</option>
+            <option>West Midlands</option>
+            <option>East of England</option>
+            <option>London</option>
+            <option>South East</option>
+            <option>South West</option>
+            <option>Wales</option>
+            <option>Scotland</option>
+            <option>Northern Ireland</option>
+            <option>Anywhere in the UK</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="size">Biggest job you'd take on</label>
+          <select id="size" name="size" required>
+            <option value="">Choose one</option>
+            <option>Up to £25,000</option>
+            <option>Up to £100,000</option>
+            <option>Up to £500,000</option>
+            <option>Over £500,000</option>
+          </select>
+        </div>
+
+        <fieldset class="field full">
+          <legend>Accreditations you already have</legend>
+          <div class="ticks">
+            <label><input type="checkbox" name="accreditations" value="CHAS"> CHAS</label>
+            <label><input type="checkbox" name="accreditations" value="Constructionline"> Constructionline</label>
+            <label><input type="checkbox" name="accreditations" value="SafeContractor or SSIP"> SafeContractor or SSIP</label>
+            <label><input type="checkbox" name="accreditations" value="None yet"> None yet</label>
+          </div>
+        </fieldset>
+
+        <div class="submit">
+          <button class="btn" type="submit" id="go">Start my free trial</button>
+          <p>We'll only use your email to send your list.</p>
+        </div>
+        <div class="msg" id="msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <div class="faq">
+        <div><h3>Where do the jobs come from?</h3><p>The government's own tender websites, Find a Tender and Contracts Finder. Every public body in the UK has to post its contracts there.</p></div>
+        <div><h3>What happens after 30 days?</h3><p>If it's finding you work, carry on for £15 a month. If not, do nothing and the emails stop.</p></div>
+        <div><h3>Do you bid for me?</h3><p>No. We find the jobs and flag the catches. You decide what to go for and submit the bid yourself.</p></div>
+        <div><h3>Is it only council work?</h3><p>It covers councils, the NHS, schools, housing associations, universities and government departments, plus main contractors looking for trades.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 TenderTrade. An information service, not procurement or legal advice.</span>
+    <span>Contains public sector information licensed under the Open Government Licence v3.0.</span>
+  </div>
+</footer>
+
+<script>
+// Paste the form service address here once it's set up (e.g. https://formspree.io/f/abcdwxyz).
+// While it's empty the form just shows a preview message and sends nothing.
+const FORM_ENDPOINT = "https://formspree.io/f/xoedeljd";
+
+const form = document.getElementById("trial");
+const msg = document.getElementById("msg");
+const go = document.getElementById("go");
+
+function show(text, ok) {
+  msg.textContent = text;
+  msg.className = "msg " + (ok ? "ok" : "err");
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const required = ["name", "firm", "email", "trade", "region", "size"];
+  const missing = required.filter((id) => !document.getElementById(id).value.trim());
+  const email = document.getElementById("email").value.trim();
+  if (missing.length) {
+    show("Please fill in every box so we can match the right jobs to you.", false);
+    document.getElementById(missing[0]).focus();
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    show("That email address doesn't look right. Please check it.", false);
+    document.getElementById("email").focus();
+    return;
+  }
+
+  const data = new FormData(form);
+  const payload = Object.fromEntries(data.entries());
+  payload.accreditations = data.getAll("accreditations").join(", ") || "None given";
+
+  if (!FORM_ENDPOINT) {
+    show("Preview only: the form isn't connected yet, so nothing was sent. Once it's live, " + payload.firm + " would get its first list next Monday.", true);
+    return;
+  }
+
+  go.disabled = true;
+  go.textContent = "Sending...";
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error(res.status);
+    form.reset();
+    show("You're in. Your first TenderTrade list arrives next Monday morning.", true);
+  } catch (err) {
+    show("Sorry, that didn't go through. Please try again in a minute.", false);
+  } finally {
+    go.disabled = false;
+    go.textContent = "Start my free trial";
+  }
+});
+</script>
+</body>
+</html>
